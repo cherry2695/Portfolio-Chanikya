@@ -1,0 +1,6 @@
+{
+  "name": "Chanikya Portfolio",
+  "description": "Professional full-stack MERN portfolio for A.Chanikya, Computer Science undergraduate and Full Stack Developer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
