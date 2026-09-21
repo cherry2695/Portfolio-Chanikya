@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 
-export const RESUME_DRIVE_URL = "https://drive.google.com/file/d/1YOyKGIiRqopycMiGdEqRoED5J61FYYBp/view?usp=sharing";
-export const RESUME_DIRECT_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1YOyKGIiRqopycMiGdEqRoED5J61FYYBp";
+export const RESUME_DRIVE_URL = "https://drive.google.com/file/d/1HfkOM9XjYmZs5i78i3UDCkEEbLPGe8pC/view?usp=sharing";
+export const RESUME_DIRECT_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1HfkOM9XjYmZs5i78i3UDCkEEbLPGe8pC";
 export const RESUME_LOCAL_FILE = "/Chanikya_Amancha_Resume.pdf";
 
 /**

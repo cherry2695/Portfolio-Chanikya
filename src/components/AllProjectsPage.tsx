@@ -13,10 +13,16 @@ import {
   Layers, 
   Laptop,
   Mail,
-  Landmark
+  Landmark,
+  BarChart3,
+  FileSpreadsheet
 } from "lucide-react";
 import { Project } from "../types";
 import lexisShowcase from "../assets/images/lexis_ai_showcase.png";
+import vrindaAnalysisImg from "../assets/images/vrinda_store_analysis.png";
+import netflixAnalysisImg from "../assets/images/netflix_data_analysis.png";
+import servicenowMetroImg from "../assets/images/servicenow_metro.jpg";
+import servicenowLeaveImg from "../assets/images/servicenow_leave.jpg";
 
 interface AllProjectsPageProps {
   onBackToHome: () => void;
@@ -103,19 +109,39 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
   const servicenowProjects: (Project & { type: string })[] = [
     {
       title: "Metro Ticket Generating System",
-      description: "An automated ServiceNow portal system enabling automated metro pass provisioning, custom QR code generation, fare table algorithms, and interactive admin ticket status tracking workflows.",
+      description: "An automated ServiceNow portal system enabling automated metro pass provisioning, custom QR code generation, fare table algorithms and interactive admin ticket status tracking workflows.",
       tags: ["ServiceNow", "Service Portal", "Client Scripts", "Business Rules", "Flow Designer"],
       githubUrl: "https://github.com/cherry2695/Metro-Ticket-Generating-System-ServiceNow",
       type: "metro",
-      imageUrl: "https://drive.google.com/thumbnail?id=1g7XvJXQdOXC7zS39v4M6V1h5CNF8rY1u&sz=w1600",
+      imageUrl: servicenowMetroImg,
     },
     {
       title: "Leave Management System",
-      description: "An enterprise ServiceNow HR application designed to automate holiday request lifecycles. Includes hierarchical multi-stage approval routings, leave balance ledgers, and dynamic calendar integrations.",
+      description: "An enterprise ServiceNow HR application designed to automate holiday request lifecycles. Includes hierarchical multi-stage approval routings, leave balance ledgers and dynamic calendar integrations.",
       tags: ["Servicenow", "Service Portal", "Client Scripts", "Business Rules", "Flow Designer"],
       githubUrl: "https://github.com/cherry2695/Leave-Management-System-Servicenow",
       type: "leave",
-      imageUrl: "https://drive.google.com/thumbnail?id=1jBLwrCrtNiHnUIcpMzGI7IdgBy9glotY&sz=w1600",
+      imageUrl: servicenowLeaveImg,
+    },
+  ];
+
+  // Data Analyst Projects
+  const dataAnalystProjects: (Project & { type: string; categoryLabel: string })[] = [
+    {
+      title: "Vrinda Store Data Analysis",
+      description: "Analyzed Vrinda Store sales data to identify sales trends, customer purchasing patterns, top-performing products and order performance. Created interactive dashboards and visualizations to transform raw sales data into actionable business insights.",
+      tags: ["Microsoft Excel", "Data Cleaning", "Data Analysis", "Pivot Tables"],
+      imageUrl: vrindaAnalysisImg,
+      type: "excel",
+      categoryLabel: "Excel Analytics",
+    },
+    {
+      title: "Netflix Data Analysis & Visualization",
+      description: "Analyzed the Netflix content dataset using Tableau to uncover insights into content distribution, genres, ratings, countries and release trends. Developed an interactive dashboard to visualize patterns and trends across Netflix’s movies and TV shows.",
+      tags: ["Tableau", "Data Analysis", "Data Visualization", "Dashboarding"],
+      imageUrl: netflixAnalysisImg,
+      type: "tableau",
+      categoryLabel: "Tableau Dashboard",
     },
   ];
 
@@ -275,8 +301,8 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
             <h1 className="font-display font-black text-4xl sm:text-6xl text-white uppercase tracking-[-2px] leading-none">
               Projects <span className="text-[#FF3E00]">Showcase</span>
             </h1>
-            <p className="font-sans text-white/50 text-xs sm:text-sm mt-3 max-w-2xl leading-relaxed">
-              A comprehensive catalog of my engineering endeavors, spanning robust full-stack platforms, AI-driven solutions, and specialized enterprise ServiceNow architectures.
+            <p className="font-sans text-white/50 text-xs sm:text-sm mt-3 max-w-3xl leading-relaxed">
+              A comprehensive catalog of my engineering endeavors, spanning robust Full-Stack platforms, AI-driven solutions, Data Analytics dashboards and specialized enterprise ServiceNow architectures. Combining technical depth with cross-domain adaptability to build solutions that are both innovative and production ready.
             </p>
           </div>
         </div>
@@ -459,7 +485,95 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
         </div>
       </div>
 
-      {/* SECTION 3: SERVICENOW PROJECTS (2-grid layout) */}
+      {/* SECTION 3: DATA ANALYST PROJECTS */}
+      <div className="mb-24">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="font-display font-black text-xl sm:text-2xl text-white uppercase tracking-wider">
+            Data Analyst Projects
+          </h2>
+          <div className="h-[1px] bg-white/10 flex-grow" />
+          <span className="font-mono text-[10px] text-white/40 tracking-widest uppercase">02 Dashboards & Insights</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+          {dataAnalystProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              className="group bg-[#0c0c0c] border border-white/10 rounded-none overflow-hidden hover:border-[#FF3E00]/40 transition-colors duration-300 flex flex-col text-left w-full h-full shadow-2xl"
+            >
+              <div
+                className="w-full aspect-[16/8.2] relative overflow-hidden bg-[#0c0c0c] border-b border-white/10 select-none"
+              >
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full block object-cover object-top"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = "true";
+                      if (project.title.toLowerCase().includes("vrinda")) {
+                        target.src = "https://lh3.googleusercontent.com/d/1ASh8EALVRO7JPF6CbrJmaamjbD5ADstF=w1600";
+                      } else if (project.title.toLowerCase().includes("netflix")) {
+                        target.src = "https://lh3.googleusercontent.com/d/17k-6dkXdsC1ibFgx94wdWMWCcqK26FlI=w1600";
+                      }
+                    }
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                {/* Tag pill indicating Excel / Tableau */}
+                <div className="absolute top-3 left-3 z-10 pointer-events-none">
+                  <span className="font-mono text-[9px] font-bold px-2 py-1 bg-black/85 backdrop-blur-md border border-white/15 text-white/90 uppercase tracking-widest flex items-center gap-1.5 shadow-lg">
+                    {project.type === "excel" ? (
+                      <>
+                        <FileSpreadsheet size={11} className="text-emerald-400" />
+                        <span>Excel Analytics</span>
+                      </>
+                    ) : (
+                      <>
+                        <BarChart3 size={11} className="text-amber-400" />
+                        <span>Tableau Dashboard</span>
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-[#FF3E00] transition-colors duration-200 tracking-tight leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-white/60 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-5 mt-auto">
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[10px] font-semibold text-white/90 bg-white/[0.03] border border-white/10 px-2 py-0.5 rounded-none uppercase tracking-wider select-none hover:bg-white/[0.08] transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* SECTION 4: SERVICENOW PROJECTS (2-grid layout) */}
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-8">
           <h2 className="font-display font-black text-xl sm:text-2xl text-white uppercase tracking-wider">
@@ -479,7 +593,26 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
               transition={{ duration: 0.5, delay: index * 0.12 }}
               className="group bg-[#0c0c0c] border border-white/10 rounded-none overflow-hidden hover:border-amber-500/40 transition-colors duration-300 flex flex-col text-left w-full h-full shadow-2xl"
             >
-              {renderVisualHeader(project.type, project.title, project.imageUrl)}
+              {/* Dedicated ServiceNow visual header displaying full image without cropping */}
+              <div className="w-full aspect-[16/9.85] relative overflow-hidden bg-[#010915] border-b border-white/10 select-none flex items-center justify-center">
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full block object-contain object-center"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = "true";
+                      if (project.type === "metro") {
+                        target.src = "https://lh3.googleusercontent.com/d/1g7XvJXQdOXC7zS39v4M6V1h5CNF8rY1u=w1600";
+                      } else {
+                        target.src = "https://lh3.googleusercontent.com/d/1jBLwrCrtNiHnUIcpMzGI7IdgBy9glotY=w1600";
+                      }
+                    }
+                  }}
+                />
+              </div>
 
               <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">
                 <div className="flex flex-col gap-4">
