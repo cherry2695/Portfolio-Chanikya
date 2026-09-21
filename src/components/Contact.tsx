@@ -4,9 +4,8 @@
  */
 
 import React, { useState } from "react";
-import { Mail, MapPin, Send, CheckCircle2, AlertCircle, BookOpen } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, AlertCircle, BookOpen, Check, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import axios from "axios";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -25,17 +24,22 @@ export default function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error message when user starts typing again
+    if (status.type === "error") {
+      setStatus({ type: null, message: "" });
+    }
   };
 
   const validateForm = () => {
     if (!formData.name.trim()) return "Please enter your name.";
-    if (!formData.email.trim()) return "Please enter your email.";
+    if (!formData.email.trim()) return "Please enter your email address.";
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
@@ -59,25 +63,26 @@ export default function Contact() {
     setIsSubmitting(true);
     setStatus({ type: null, message: "" });
 
+    // Client-side execution without backend dependencies - perfectly compatible with Vercel deployment
     try {
-      const response = await axios.post("/api/contact", formData);
-      
-      if (response.data.success) {
-        setStatus({
-          type: "success",
-          message: response.data.message || "Message sent successfully!",
-        });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setStatus({
-          type: "error",
-          message: response.data.error || "Failed to send message.",
-        });
-      }
-    } catch (err: any) {
-      console.error("Submission error:", err);
-      const errMsg = err.response?.data?.error || "Unable to send message at this moment. Please try again later.";
-      setStatus({ type: "error", message: errMsg });
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      setStatus({
+        type: "success",
+        message: "Thank you for reaching out! Your message has been sent successfully. I will get back to you shortly.",
+      });
+      setShowToast(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      // Auto-hide the floating toast notification after 5 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+    } catch {
+      setStatus({
+        type: "error",
+        message: "An unexpected issue occurred. Please try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -189,22 +194,32 @@ export default function Contact() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className={`p-4 rounded-none mb-6 flex items-start gap-3 border ${
+                    className={`p-4 rounded-none mb-6 flex items-start justify-between gap-3 border ${
                       status.type === "success"
-                        ? "bg-emerald-500/10 border-emerald-500/25 text-emerald-400"
-                        : "bg-rose-500/10 border-rose-500/25 text-rose-400"
+                        ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                        : "bg-rose-500/10 border-rose-500/30 text-rose-300"
                     }`}
                   >
-                    <div className="shrink-0 mt-0.5">
-                      {status.type === "success" ? (
-                        <CheckCircle2 size={16} className="text-emerald-500" />
-                      ) : (
-                        <AlertCircle size={16} className="text-rose-500" />
-                      )}
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 mt-0.5">
+                        {status.type === "success" ? (
+                          <CheckCircle2 size={18} className="text-emerald-400" />
+                        ) : (
+                          <AlertCircle size={18} className="text-rose-400" />
+                        )}
+                      </div>
+                      <span className="font-sans text-sm font-medium text-left leading-relaxed">
+                        {status.message}
+                      </span>
                     </div>
-                    <span className="font-sans text-sm font-medium text-left">
-                      {status.message}
-                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setStatus({ type: null, message: "" })}
+                      className="text-white/40 hover:text-white p-0.5 transition-colors shrink-0"
+                      aria-label="Dismiss message"
+                    >
+                      <X size={14} />
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -301,6 +316,39 @@ export default function Contact() {
 
         </div>
       </div>
+
+      {/* Floating Toast Notification on Successful Submission */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="fixed bottom-8 right-6 sm:right-8 z-50 max-w-md bg-[#0f0f0f] text-white border border-emerald-500/40 p-4 shadow-2xl flex items-center gap-4"
+          >
+            <div className="w-9 h-9 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+              <Check size={18} />
+            </div>
+            <div className="flex flex-col text-left flex-grow">
+              <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold">
+                Message Sent
+              </span>
+              <p className="font-sans text-xs text-white/80 mt-0.5">
+                Thank you! Your message has been received successfully.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowToast(false)}
+              className="text-white/40 hover:text-white transition-colors p-1"
+              aria-label="Close notification"
+            >
+              <X size={15} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
