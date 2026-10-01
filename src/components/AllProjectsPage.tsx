@@ -119,8 +119,8 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       imageUrl: mailcraftImg,
     },
     {
-      title: "AccessFlow – Enterprise Identity Governance & Approval Workflow Engine",
-      description: "A comprehensive, production-grade Java Full Stack enterprise web application demonstrating Identity Governance and Administration (IGA), a transactional multi-stage approval engine, role-based authorization, JWT authentication, and an append-only audit trail on top of a normalized MySQL 8 schema.",
+      title: "Authentix-Enterprise Access Request & Approval Platform",
+      description: "A comprehensive, production-grade Java Full Stack enterprise web application demonstrating Identity Governance and Administration (IGA), a transactional multi-stage approval engine, role-based authorization, JWT authentication and an append-only audit trail on top of a normalized MySQL 8 schema.",
       tags: ["Java", "Spring Boot", "React.js", "MySQL", "REST APIs", "JWT", "Bootstrap 5"],
       githubUrl: "https://github.com/cherry2695/Authentix-Enterprise-Access-Request-Approval-Platform",
       type: "accessflow",
