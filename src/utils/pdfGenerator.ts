@@ -206,8 +206,8 @@ export function generateResumePDF() {
   doc.setFont("times", "bold");
   doc.setFontSize(10);
   doc.setTextColor(17, 17, 17);
-  doc.text("Apollo Pharmacies - Frontend Developer & UI/UX Designer", leftMargin, y);
-  doc.text("June 2026 - Present", pageWidth - rightMargin - doc.getTextWidth("June 2026 - Present"), y);
+  doc.text("Apollo Pharmacies - UI/UX Designer", leftMargin, y);
+  doc.text("June 2026 - Sep 2026", pageWidth - rightMargin - doc.getTextWidth("June 2026 - Sep 2026"), y);
   y += 6.5;
 
   // 6. Skills

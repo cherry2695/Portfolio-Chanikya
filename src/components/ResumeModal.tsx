@@ -144,11 +144,11 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <div>
                     <div className="flex justify-between items-start gap-2">
                       <h4 className="font-sans font-bold text-white">
-                        Frontend Developer & UI/UX Designer
+                        UI/UX Designer
                       </h4>
                       <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
                         <Calendar size={11} />
-                        June 2026 &mdash; Present
+                        June 2026 &mdash; Sep 2026
                       </span>
                     </div>
                     <p className="text-xs text-[#FF3E00] font-mono font-bold mt-1 uppercase tracking-wider">Apollo Pharmacies</p>

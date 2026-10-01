@@ -150,14 +150,14 @@ export default function About({ onResumeDownload }: AboutProps) {
 
                   <div>
                     <h4 className="font-sans font-bold text-base sm:text-lg text-white">
-                      Frontend Developer & UI/UX Designer
+                      UI/UX Designer
                     </h4>
                     <p className="font-sans text-sm text-[#FF3E00] font-medium mt-1">
                       Apollo Pharmacies
                     </p>
                     <div className="flex flex-wrap gap-2 items-center mt-2.5">
                       <span className="inline-block bg-white/5 text-white/70 border border-white/10 text-xs font-mono tracking-wider uppercase px-3 py-1 rounded-none">
-                        June 2026 &mdash; Present
+                        June 2026 &mdash; Sep 2026
                       </span>
                     </div>
                   </div>

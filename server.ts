@@ -116,7 +116,6 @@ const defaultProjects = [
     description: "Shopzy is a modern AI-powered full-stack E-commerce application built to provide an intelligent and seamless online shopping experience. The platform combines traditional E-commerce functionalities with AI-driven product recommendations, enabling users to discover products more efficiently and make informed purchasing decisions.",
     tags: ["React.js", "TypeScript", "MongoDB", "Node.js", "Express.js", "Google Gemini"],
     githubUrl: "https://github.com/cherry2695/Shopzy-FullStack-Ecommerce-Application",
-    liveUrl: "https://shopzy.ai.studio/",
     imageUrl: "/src/assets/images/shopzy_banner_1782640902612.jpg",
   },
   {
@@ -124,7 +123,6 @@ const defaultProjects = [
     description: "A modern full-stack healthcare platform that helps patients manage prescriptions, receive voice-based medication reminders, compare medicine prices across multiple pharmacies and stay informed through real-time notifications. The application is designed to improve medication adherence and simplify healthcare management with a responsive user interface.",
     tags: ["React.js", "TypeScript", "MySQL", "Node.js", "Express.js", "Drizzle ORM"],
     githubUrl: "https://github.com/cherry2695/MediCare-FullStack-Healthcare-Platform",
-    liveUrl: "https://health-hub-pro--z4developer95.replit.app",
     imageUrl: "/src/assets/images/medicare_banner_1782642361387.jpg",
   },
   {
@@ -280,9 +278,9 @@ app.get("/api/portfolio-data", async (req, res) => {
           duration: "Aug 2025 - Present",
         },
         {
-          role: "Frontend Developer & UI/UX Designer",
+          role: "UI/UX Designer",
           organization: "Apollo Pharmacies",
-          duration: "June 2026 - Present",
+          duration: "June 2026 - Sep 2026",
         },
       ],
       skills: defaultSkills,

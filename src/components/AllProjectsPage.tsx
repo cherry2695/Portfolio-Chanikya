@@ -14,6 +14,8 @@ import {
   Laptop,
   Mail,
   Landmark,
+  ShieldCheck,
+  GraduationCap,
   BarChart3,
   FileSpreadsheet
 } from "lucide-react";
@@ -23,6 +25,8 @@ import vrindaAnalysisImg from "../assets/images/vrinda_store_analysis.png";
 import netflixAnalysisImg from "../assets/images/netflix_data_analysis.png";
 import servicenowMetroImg from "../assets/images/servicenow_metro.jpg";
 import servicenowLeaveImg from "../assets/images/servicenow_leave.jpg";
+import mailcraftImg from "../assets/images/mailcraft_card.png";
+import accessflowImg from "../assets/images/accessflow_card.png";
 
 interface AllProjectsPageProps {
   onBackToHome: () => void;
@@ -40,7 +44,6 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       description: "Shopzy is a modern AI-powered full-stack E-commerce application built to provide an intelligent and seamless online shopping experience. The platform combines traditional E-commerce functionalities with AI-driven product recommendations, enabling users to discover products more efficiently and make informed purchasing decisions.",
       tags: ["React.js", "TypeScript", "MongoDB", "Node.js", "Express.js", "Google Gemini"],
       githubUrl: "https://github.com/cherry2695/Shopzy-FullStack-Ecommerce-Application",
-      liveUrl: "https://shopzy.ai.studio/",
       imageUrl: shopzyMockup,
     },
     {
@@ -48,7 +51,6 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       description: "A modern full-stack healthcare platform that helps patients manage prescriptions, receive voice-based medication reminders, compare medicine prices across multiple pharmacies and stay informed through real-time notifications. The application is designed to improve medication adherence and simplify healthcare management with a responsive user interface.",
       tags: ["React.js", "TypeScript", "MySQL", "Node.js", "Express.js", "Drizzle ORM"],
       githubUrl: "https://github.com/cherry2695/MediCare-FullStack-Healthcare-Platform",
-      liveUrl: "https://health-hub-pro--z4developer95.replit.app",
       imageUrl: medicareMockup,
     },
     {
@@ -85,7 +87,12 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
     },
   ];
 
-  const listFullStack = fullStackProjects && fullStackProjects.length > 0 ? fullStackProjects : defaultFullStack;
+  const listFullStack: Project[] = (fullStackProjects && fullStackProjects.length > 0 ? fullStackProjects : defaultFullStack).map((p) => {
+    if (p.title.toLowerCase().includes("shopzy") || p.title.toLowerCase().includes("medicare")) {
+      return { ...p, liveUrl: undefined };
+    }
+    return p;
+  });
 
   // Java Full Stack Projects
   const javaFullStackProjects: (Project & { type: string })[] = [
@@ -93,15 +100,31 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       title: "SmartBank - Secure Banking Management System",
       description: "SmartBank is a robust desktop-based banking platform engineered using Core Java and Java Swing to deliver a secure and intuitive graphical user interface. The system streamlines core financial operations and account balance tracking. It features a secure authentication and credential validation module powered by JDBC to safely verify user PINs.",
       tags: ["Java", "Spring Boot", "Java Swing", "MySQL", "JWT", "JDBC"],
-      githubUrl: "https://github.com/cherry2695",
+      githubUrl: "https://github.com/cherry2695/Smart-Bank-Management-System",
       type: "smartbank",
     },
     {
-      title: "AI MailCraft Intelligent - Email Generation Platform",
-      description: "Smart AI Email Assistant is a full-stack AI writing tool that helps users reply to emails faster. It ships as two clients, a Chrome extension that injects an AI Reply button directly into Gmail's compose window and a standalone React web app. Both backed by the same Spring Boot REST API, which integrates with Google's Gemini API to generate the actual reply text.",
-      tags: ["Java", "Spring Boot", "React.js", "Javascript", "REST API's", "Google Gemini"],
+      title: "CampusCore – Student Management & Academic Dashboard",
+      description: "A full-stack student management platform built with Java and Spring Boot to streamline student record management and academic administration. The system provides a responsive dashboard for managing student information, performing CRUD operations and securely connecting the frontend with RESTful backend services using MySQL and Spring Data JPA.",
+      tags: ["Java", "Spring Boot", "Bootstrap", "JavaScript", "MySQL", "REST APIs"],
+      githubUrl: "https://github.com/cherry2695/CampusCore-Student-Management-Academic-Dashboard",
+      type: "campuscore",
+    },
+    {
+      title: "AI MailCraft Intelligent – Email Generation Platform",
+      description: "Smart AI Email Assistant is a full-stack AI writing tool that helps users reply to emails faster. It ships as two clients: a Chrome extension that injects an AI Reply button directly into Gmail's compose window and a standalone React web app, both backed by the same Spring Boot REST API integrated with Google Gemini.",
+      tags: ["Java", "Spring Boot", "React.js", "REST APIs", "Google Gemini", "Chrome Extension"],
       githubUrl: "https://github.com/cherry2695/AI-MailCraft-Intelligent-Email-Generation-Platform",
       type: "mailcraft",
+      imageUrl: mailcraftImg,
+    },
+    {
+      title: "AccessFlow – Enterprise Identity Governance & Approval Workflow Engine",
+      description: "A comprehensive, production-grade Java Full Stack enterprise web application demonstrating Identity Governance and Administration (IGA), a transactional multi-stage approval engine, role-based authorization, JWT authentication, and an append-only audit trail on top of a normalized MySQL 8 schema.",
+      tags: ["Java", "Spring Boot", "React.js", "MySQL", "REST APIs", "JWT", "Bootstrap 5"],
+      githubUrl: "https://github.com/cherry2695/Authentix-Enterprise-Access-Request-Approval-Platform",
+      type: "accessflow",
+      imageUrl: accessflowImg,
     },
   ];
 
@@ -154,11 +177,15 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       src = medicareMockup;
     } else if (title.toLowerCase().includes("lexis")) {
       src = lexisShowcase;
+    } else if (title.toLowerCase().includes("accessflow") || type === "accessflow") {
+      src = accessflowImg;
+    } else if (title.toLowerCase().includes("mailcraft") || type === "mailcraft") {
+      src = mailcraftImg;
     }
 
     if (src) {
       return (
-        <div className="w-full aspect-[16/7.8] relative overflow-hidden bg-[#0c0c0c] border-b border-white/10 group select-none">
+        <div className={`w-full ${aspectRatioClass} relative overflow-hidden bg-[#0c0c0c] border-b border-white/10 group select-none`}>
           <img
             src={src}
             alt={title}
@@ -170,6 +197,10 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
                 target.dataset.triedFallback = "true";
                 if (title.toLowerCase().includes("lexis")) {
                   target.src = "https://lh3.googleusercontent.com/d/1G0FWURquLVhxW1Mff3qelTPf-nWvvQCP=w1920";
+                } else if (title.toLowerCase().includes("accessflow") || type === "accessflow") {
+                  target.src = "https://drive.google.com/thumbnail?id=1AH6t43dX9bL30RlB4WqteEQBf001VVE9&sz=w1600";
+                } else if (title.toLowerCase().includes("mailcraft") || type === "mailcraft") {
+                  target.src = "https://drive.google.com/thumbnail?id=1mGH3YijEQrMGnPyRy_bzlskzLCJ3Muuq&sz=w1600";
                 }
               }
             }}
@@ -179,6 +210,22 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
       );
     }
     switch (type) {
+      case "accessflow":
+        return (
+          <div className={`w-full ${aspectRatioClass} bg-gradient-to-br from-blue-950/40 via-slate-900/50 to-indigo-950/40 flex flex-col justify-center items-center border-b border-white/5 relative overflow-hidden`}>
+            <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_0.5px,transparent_0.5px)] [background-size:12px_12px] opacity-10" />
+            <div className="flex items-center gap-3 relative z-10 bg-[#111111]/90 border border-white/10 px-4 py-3 rounded-none shadow-2xl transition-transform duration-300 group-hover:translate-y-[-4px]">
+              <ShieldCheck className="text-blue-400 animate-pulse" size={28} />
+              <div className="text-left">
+                <div className="text-xs font-bold font-mono text-white tracking-tight flex items-center gap-1.5">
+                  <span>ACCESSFLOW</span>
+                  <span className="text-[9px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 font-semibold">Spring Boot & MySQL</span>
+                </div>
+                <div className="text-[9px] font-mono text-white/50 uppercase tracking-wider mt-0.5">Enterprise Identity Governance</div>
+              </div>
+            </div>
+          </div>
+        );
       case "mailcraft":
         return (
           <div className={`w-full ${aspectRatioClass} bg-gradient-to-br from-blue-950/40 via-indigo-950/40 to-slate-900/40 flex flex-col justify-center items-center border-b border-white/5 relative overflow-hidden`}>
@@ -199,7 +246,7 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
         return (
           <div className={`w-full ${aspectRatioClass} bg-gradient-to-br from-emerald-950/40 via-teal-950/40 to-slate-900/40 flex flex-col justify-center items-center border-b border-white/5 relative overflow-hidden`}>
             <div className="absolute inset-0 bg-[radial-gradient(#10B981_0.5px,transparent_0.5px)] [background-size:12px_12px] opacity-10" />
-            <div className="flex items-center gap-3 relative z-10 bg-[#111111]/90 border border-white/10 px-4 py-3 rounded-none shadow-2xl transition-transform duration-300 group-hover:translate-y-[-4px]">
+            <div className="flex items-center gap-3 relative z-10 bg-[#111111]/90 border border-white/10 px-4 py-3 rounded-none shadow-2xl">
               <Landmark className="text-emerald-400 animate-pulse" size={28} />
               <div className="text-left">
                 <div className="text-xs font-bold font-mono text-white tracking-tight flex items-center gap-1.5">
@@ -207,6 +254,22 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
                   <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 font-semibold">Java & Spring Boot</span>
                 </div>
                 <div className="text-[9px] font-mono text-white/50 uppercase tracking-wider mt-0.5">Desktop Application + JDBC Auth</div>
+              </div>
+            </div>
+          </div>
+        );
+      case "campuscore":
+        return (
+          <div className={`w-full ${aspectRatioClass} bg-gradient-to-br from-indigo-950/40 via-purple-950/40 to-slate-900/40 flex flex-col justify-center items-center border-b border-white/5 relative overflow-hidden`}>
+            <div className="absolute inset-0 bg-[radial-gradient(#8B5CF6_0.5px,transparent_0.5px)] [background-size:12px_12px] opacity-10" />
+            <div className="flex items-center gap-3 relative z-10 bg-[#111111]/90 border border-white/10 px-4 py-3 rounded-none shadow-2xl">
+              <GraduationCap className="text-purple-400 animate-pulse" size={28} />
+              <div className="text-left">
+                <div className="text-xs font-bold font-mono text-white tracking-tight flex items-center gap-1.5">
+                  <span>CAMPUSCORE</span>
+                  <span className="text-[9px] bg-purple-500/20 text-purple-400 px-1.5 py-0.5 font-semibold">Java & Spring Boot</span>
+                </div>
+                <div className="text-[9px] font-mono text-white/50 uppercase tracking-wider mt-0.5">Student Records & Academic Admin</div>
               </div>
             </div>
           </div>
@@ -428,7 +491,7 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
             Java Full Stack Projects
           </h2>
           <div className="h-[1px] bg-white/10 flex-grow" />
-          <span className="font-mono text-[10px] text-white/40 tracking-widest uppercase">02 Java Solutions</span>
+          <span className="font-mono text-[10px] text-white/40 tracking-widest uppercase">04 Java Solutions</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
@@ -441,7 +504,28 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
               transition={{ duration: 0.5, delay: index * 0.12 }}
               className="group bg-[#0c0c0c] border border-white/10 rounded-none overflow-hidden hover:border-[#FF3E00]/40 transition-colors duration-300 flex flex-col text-left w-full h-full shadow-2xl"
             >
-              {renderVisualHeader(project.type, project.title, project.imageUrl)}
+              {/* Dedicated Java Full Stack visual header without zoom effect */}
+              {project.imageUrl ? (
+                <div className="w-full aspect-[16/7.62] relative overflow-hidden bg-[#0c0c0c] border-b border-white/10 select-none flex items-center justify-center">
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-contain object-center block"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = "true";
+                        target.src = project.type === "accessflow"
+                          ? "https://drive.google.com/thumbnail?id=1Pj4c4zCQYuFoRv5iIuWX7no2PfgYlk1D&sz=w1600"
+                          : "https://drive.google.com/thumbnail?id=1mGH3YijEQrMGnPyRy_bzlskzLCJ3Muuq&sz=w1600";
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                renderVisualHeader(project.type, project.title, project.imageUrl)
+              )}
 
               <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">
                 <div className="flex flex-col gap-4">
@@ -526,23 +610,6 @@ export default function AllProjectsPage({ onBackToHome, fullStackProjects }: All
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 pointer-events-none" />
-
-                {/* Tag pill indicating Excel / Tableau */}
-                <div className="absolute top-3 left-3 z-10 pointer-events-none">
-                  <span className="font-mono text-[9px] font-bold px-2 py-1 bg-black/85 backdrop-blur-md border border-white/15 text-white/90 uppercase tracking-widest flex items-center gap-1.5 shadow-lg">
-                    {project.type === "excel" ? (
-                      <>
-                        <FileSpreadsheet size={11} className="text-emerald-400" />
-                        <span>Excel Analytics</span>
-                      </>
-                    ) : (
-                      <>
-                        <BarChart3 size={11} className="text-amber-400" />
-                        <span>Tableau Dashboard</span>
-                      </>
-                    )}
-                  </span>
-                </div>
               </div>
 
               <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">

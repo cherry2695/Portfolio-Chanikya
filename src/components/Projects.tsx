@@ -23,7 +23,6 @@ export default function Projects({ projects, onViewMoreClick }: ProjectsProps) {
       description: "Shopzy is a modern AI-powered full-stack E-commerce application built to provide an intelligent and seamless online shopping experience. The platform combines traditional E-commerce functionalities with AI-driven product recommendations, enabling users to discover products more efficiently and make informed purchasing decisions.",
       tags: ["React.js", "TypeScript", "MongoDB", "Node.js", "Express.js", "Google Gemini"],
       githubUrl: "https://github.com/cherry2695/Shopzy-FullStack-Ecommerce-Application",
-      liveUrl: "https://shopzy.ai.studio/",
       imageUrl: shopzyMockup,
     },
     {
@@ -31,7 +30,6 @@ export default function Projects({ projects, onViewMoreClick }: ProjectsProps) {
       description: "A modern full-stack healthcare platform that helps patients manage prescriptions, receive voice-based medication reminders, compare medicine prices across multiple pharmacies and stay informed through real-time notifications. The application is designed to improve medication adherence and simplify healthcare management with a responsive user interface.",
       tags: ["React.js", "TypeScript", "MySQL", "Node.js", "Express.js", "Drizzle ORM"],
       githubUrl: "https://github.com/cherry2695/MediCare-FullStack-Healthcare-Platform",
-      liveUrl: "https://health-hub-pro--z4developer95.replit.app",
       imageUrl: medicareMockup,
     },
     {
@@ -69,9 +67,14 @@ export default function Projects({ projects, onViewMoreClick }: ProjectsProps) {
   ];
 
   // We want to display all 6 main featured projects on the main page
-  const displayProjects = (projects && projects.length > 0 ? projects : defaultProjects).filter(
-    (p) => !p.title.toLowerCase().includes("flowboard")
-  );
+  const displayProjects: Project[] = (projects && projects.length > 0 ? projects : defaultProjects)
+    .filter((p) => !p.title.toLowerCase().includes("flowboard"))
+    .map((p) => {
+      if (p.title.toLowerCase().includes("shopzy") || p.title.toLowerCase().includes("medicare")) {
+        return { ...p, liveUrl: undefined };
+      }
+      return p;
+    });
 
   const renderProjectMock = (project: Project) => {
     let src = project.imageUrl;
