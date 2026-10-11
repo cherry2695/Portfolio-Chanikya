@@ -199,25 +199,36 @@ export function generateResumePDF() {
   doc.setFont("times", "bold");
   doc.setFontSize(10);
   doc.setTextColor(17, 17, 17);
-  doc.text("Centre for Innovation & Entrepreneurship - Graphic Designer", leftMargin, y);
+  doc.text("MLRIT CIE - Design Lead", leftMargin, y);
   doc.text("Aug 2025 - Present", pageWidth - rightMargin - doc.getTextWidth("Aug 2025 - Present"), y);
-  y += 5.5;
+  y += 5;
 
-  doc.setFont("times", "bold");
-  doc.setFontSize(10);
-  doc.setTextColor(17, 17, 17);
-  doc.text("Apollo Pharmacies - UI/UX Designer", leftMargin, y);
+  doc.text("MLRIT CIE - Micro Project Mentor", leftMargin, y);
+  doc.text("2025", pageWidth - rightMargin - doc.getTextWidth("2025"), y);
+  y += 5;
+
+  doc.text("MLRIT CIE - Graphic Designer", leftMargin, y);
+  doc.text("2024 - 2025", pageWidth - rightMargin - doc.getTextWidth("2024 - 2025"), y);
+  y += 5;
+
+  doc.text("Code Club MLRIT - Graphic Designer", leftMargin, y);
+  doc.text("2024 - 2025", pageWidth - rightMargin - doc.getTextWidth("2024 - 2025"), y);
+  y += 5;
+
+  doc.text("Apollo Pharmacies - Graphic Designer & UI/UX Designer", leftMargin, y);
   doc.text("June 2026 - Sep 2026", pageWidth - rightMargin - doc.getTextWidth("June 2026 - Sep 2026"), y);
   y += 6.5;
 
   // 6. Skills
   drawSectionHeader("TECHNICAL SKILLS");
   const skillsData = [
-    { label: "Frontend:", list: "React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Figma" },
-    { label: "Backend:", list: "Node.js, Express.js, Python, FastAPI, Java, Spring Boot, RESTful APIs, JWT Auth" },
-    { label: "Databases:", list: "MongoDB, MySQL, Vector Databases (Pinecone/ChromaDB), JDBC" },
-    { label: "Cloud & Tools:", list: "Git, GitHub, Docker, Postman, Vercel, Render, ServiceNow (CSA, CAD, Flow Designer)" },
-    { label: "AI & ML:", list: "Google Gemini API, Retrieval-Augmented Generation (RAG), Document Embeddings" }
+    { label: "Languages:", list: "C, Python, Java" },
+    { label: "Frontend:", list: "HTML5, CSS3, JavaScript, Bootstrap5, TailwindCSS, React.js" },
+    { label: "Backend:", list: "Node.js, Express.js, REST APIs, Spring MVC, Springboot, Hibernate" },
+    { label: "Databases:", list: "MySQL, Oracle Database, MongoDB, Supabase" },
+    { label: "Design & Data:", list: "Canva, Figma, Picsart, Adobe Photoshop, Adobe Illustrator, Microsoft Excel, Tableau, RStudio, Claude AI" },
+    { label: "Tools & Deploy:", list: "Git, GitHub, VSCode, Notion, WordPress, ServiceNow, Render, Netlify, Vercel, AWS, Cloudinary" },
+    { label: "CS:", list: "OOPs, DBMS, OS, Computer Networks, Cloud Computing" }
   ];
 
   skillsData.forEach(skill => {

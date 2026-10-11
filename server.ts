@@ -74,39 +74,39 @@ const Achievement = mongoose.models.Achievement || mongoose.model("Achievement",
 const defaultSkills = [
   {
     category: "Programming Languages",
-    items: ["C", "Python", "Java", "JavaScript"],
+    items: ["C", "Python", "Java"],
   },
   {
     category: "Frontend Development",
-    items: ["HTML5", "CSS3", "Bootstrap 5", "Tailwind CSS", "React.js"],
+    items: ["HTML5", "CSS3", "JavaScript", "Bootstrap5", "TailwindCSS", "React.js"],
   },
   {
     category: "Backend Development",
-    items: ["Node.js", "Express.js", "Spring Boot", "RESTful APIs"],
+    items: ["Node.js", "Express.js", "REST APIs", "Spring MVC", "Springboot", "Hibernate"],
   },
   {
     category: "Databases",
-    items: ["MySQL", "MongoDB", "Oracle Database"],
+    items: ["MySQL", "Oracle Database", "MongoDB", "Supabase"],
   },
   {
     category: "Design",
-    items: ["Figma", "Adobe Photoshop", "Canva", "Picsart"],
+    items: ["Canva", "Figma", "Picsart", "Adobe Photoshop", "Adobe Illustrator"],
   },
   {
     category: "Data Analytics",
-    items: ["Microsoft Excel", "Tableau", "Claude AI", "Perplexity AI"],
+    items: ["Microsoft Excel", "Tableau", "RStudio", "Claude AI"],
   },
   {
     category: "Developer Tools",
-    items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Notion", "WordPress"],
+    items: ["Git", "GitHub", "VSCode", "Notion", "WordPress", "ServiceNow"],
   },
   {
     category: "Deployment",
-    items: ["AWS", "Vercel", "Netlify", "Render", "Cloudinary"],
+    items: ["Render", "Netlify", "Vercel", "AWS", "Cloudinary"],
   },
   {
-    category: "CS Fundamentals",
-    items: ["OOP", "DBMS", "OS", "Computer Networks", "Cloud Computing"],
+    category: "CS",
+    items: ["OOPs", "DBMS", "OS", "Computer Networks", "Cloud Computing"],
   },
 ];
 
@@ -119,7 +119,7 @@ const defaultProjects = [
     imageUrl: "/src/assets/images/shopzy_banner_1782640902612.jpg",
   },
   {
-    title: "Medicare Assistant – Smart Healthcare Platform",
+    title: "Medicare – Smart Healthcare Platform",
     description: "A modern full-stack healthcare platform that helps patients manage prescriptions, receive voice-based medication reminders, compare medicine prices across multiple pharmacies and stay informed through real-time notifications. The application is designed to improve medication adherence and simplify healthcare management with a responsive user interface.",
     tags: ["React.js", "TypeScript", "MySQL", "Node.js", "Express.js", "Drizzle ORM"],
     githubUrl: "https://github.com/cherry2695/MediCare-FullStack-Healthcare-Platform",
@@ -273,12 +273,27 @@ app.get("/api/portfolio-data", async (req, res) => {
       ],
       experience: [
         {
-          role: "Graphic Designer",
-          organization: "Centre for Innovation & Entrepreneurship",
+          role: "Design Lead",
+          organization: "MLRIT CIE (Centre for Innovation & Entrepreneurship)",
           duration: "Aug 2025 - Present",
         },
         {
-          role: "UI/UX Designer",
+          role: "Micro Project Mentor",
+          organization: "MLRIT CIE (Centre for Innovation & Entrepreneurship)",
+          duration: "2025",
+        },
+        {
+          role: "Graphic Designer",
+          organization: "MLRIT CIE (Centre for Innovation & Entrepreneurship)",
+          duration: "2024 - 2025",
+        },
+        {
+          role: "Graphic Designer",
+          organization: "Code Club MLRIT",
+          duration: "2024 - 2025",
+        },
+        {
+          role: "Graphic Designer & UI/UX Designer",
           organization: "Apollo Pharmacies",
           duration: "June 2026 - Sep 2026",
         },

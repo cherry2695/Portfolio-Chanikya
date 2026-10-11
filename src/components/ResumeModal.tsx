@@ -127,7 +127,33 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <h3 className="font-display font-bold text-white border-l-2 border-[#FF3E00] pl-2.5 uppercase tracking-wider text-xs">
                   Experience
                 </h3>
-                <div className="flex flex-col gap-5 pl-3">
+                <div className="flex flex-col gap-4 pl-3">
+                  <div>
+                    <div className="flex justify-between items-start gap-2">
+                      <h4 className="font-sans font-bold text-white">
+                        Design Lead
+                      </h4>
+                      <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
+                        <Calendar size={11} />
+                        Aug 2025 - Present
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-0.5 uppercase tracking-wider">Centre for Innovation & Entrepreneurship</p>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between items-start gap-2">
+                      <h4 className="font-sans font-bold text-white">
+                        Micro Project Mentor
+                      </h4>
+                      <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
+                        <Calendar size={11} />
+                        2025
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-0.5 uppercase tracking-wider">Centre for Innovation & Entrepreneurship</p>
+                  </div>
+
                   <div>
                     <div className="flex justify-between items-start gap-2">
                       <h4 className="font-sans font-bold text-white">
@@ -135,23 +161,36 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                       </h4>
                       <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
                         <Calendar size={11} />
-                        Aug 2025 - Present
+                        2024 - 2025
                       </span>
                     </div>
-                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-1 uppercase tracking-wider">Centre for Innovation & Entrepreneurship</p>
+                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-0.5 uppercase tracking-wider">Centre for Innovation & Entrepreneurship</p>
                   </div>
 
                   <div>
                     <div className="flex justify-between items-start gap-2">
                       <h4 className="font-sans font-bold text-white">
-                        UI/UX Designer
+                        Graphic Designer
+                      </h4>
+                      <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
+                        <Calendar size={11} />
+                        2024 - 2025
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-0.5 uppercase tracking-wider">Code Club MLRIT</p>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between items-start gap-2">
+                      <h4 className="font-sans font-bold text-white">
+                        Graphic Designer & UI/UX Designer
                       </h4>
                       <span className="text-[10px] font-mono font-bold text-white/40 shrink-0 flex items-center gap-1 uppercase tracking-wider">
                         <Calendar size={11} />
                         June 2026 &mdash; Sep 2026
                       </span>
                     </div>
-                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-1 uppercase tracking-wider">Apollo Pharmacies</p>
+                    <p className="text-xs text-[#FF3E00] font-mono font-bold mt-0.5 uppercase tracking-wider">Apollo Pharmacies</p>
                   </div>
                 </div>
               </div>
@@ -167,7 +206,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                       Languages & Frontend
                     </h4>
                     <p className="text-xs leading-relaxed text-white/80">
-                      C, Python, Java, JavaScript, SQL, HTML5, CSS3, Bootstrap, Tailwind CSS, React
+                      C, Python, Java, HTML5, CSS3, JavaScript, Bootstrap5, TailwindCSS, React.js
                     </p>
                   </div>
                   <div>
@@ -175,15 +214,15 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                       Backend & Databases
                     </h4>
                     <p className="text-xs leading-relaxed text-white/80">
-                      Node.js, Express.js, REST API's, MySQL, MongoDB, OracleDB
+                      Node.js, Express.js, REST APIs, Spring MVC, Springboot, Hibernate, MySQL, Oracle Database, MongoDB, Supabase
                     </p>
                   </div>
                   <div className="sm:col-span-2">
                     <h4 className="font-mono font-bold text-[10px] text-white/40 uppercase tracking-wider mb-1">
-                      Tools & Design
+                      Tools, Design & Fundamentals
                     </h4>
                     <p className="text-xs leading-relaxed text-white/80">
-                      Git, VS Code, GitHub, Postman, Notion, WordPress, Canva, Figma, Adobe Photoshop, Sketch, Picsart
+                      Git, GitHub, VSCode, Notion, WordPress, ServiceNow, Canva, Figma, Picsart, Adobe Photoshop, Adobe Illustrator, Microsoft Excel, Tableau, RStudio, Claude AI, Render, Netlify, Vercel, AWS, Cloudinary, OOPs, DBMS, OS, Computer Networks, Cloud Computing
                     </p>
                   </div>
                 </div>

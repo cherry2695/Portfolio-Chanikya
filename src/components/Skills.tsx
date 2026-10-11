@@ -30,39 +30,39 @@ export default function Skills({ skillsData }: SkillsProps) {
   const defaultSkills: SkillCategory[] = [
     {
       category: "Programming Languages",
-      items: ["C", "Python", "Java", "JavaScript"],
+      items: ["C", "Python", "Java"],
     },
     {
       category: "Frontend Development",
-      items: ["HTML5", "CSS3", "Bootstrap 5", "Tailwind CSS", "React.js"],
+      items: ["HTML5", "CSS3", "JavaScript", "Bootstrap5", "TailwindCSS", "React.js"],
     },
     {
       category: "Backend Development",
-      items: ["Node.js", "Express.js", "Spring Boot", "RESTful APIs"],
+      items: ["Node.js", "Express.js", "REST APIs", "Spring MVC", "Springboot", "Hibernate"],
     },
     {
       category: "Databases",
-      items: ["MySQL", "MongoDB", "Oracle Database"],
+      items: ["MySQL", "Oracle Database", "MongoDB", "Supabase"],
     },
     {
       category: "Design",
-      items: ["Figma", "Adobe Photoshop", "Canva", "Picsart"],
+      items: ["Canva", "Figma", "Picsart", "Adobe Photoshop", "Adobe Illustrator"],
     },
     {
       category: "Data Analytics",
-      items: ["Microsoft Excel", "Tableau", "Claude AI", "Perplexity AI"],
+      items: ["Microsoft Excel", "Tableau", "RStudio", "Claude AI"],
     },
     {
       category: "Developer Tools",
-      items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Notion", "WordPress"],
+      items: ["Git", "GitHub", "VSCode", "Notion", "WordPress", "ServiceNow"],
     },
     {
       category: "Deployment",
-      items: ["AWS", "Vercel", "Netlify", "Render", "Cloudinary"],
+      items: ["Render", "Netlify", "Vercel", "AWS", "Cloudinary"],
     },
     {
-      category: "CS Fundamentals",
-      items: ["OOP", "DBMS", "OS", "Computer Networks", "Cloud Computing"],
+      category: "CS",
+      items: ["OOPs", "DBMS", "OS", "Computer Networks", "Cloud Computing"],
     },
   ];
 
@@ -90,6 +90,7 @@ export default function Skills({ skillsData }: SkillsProps) {
         return <Wrench size={20} className="text-[#FF3E00]" />;
       case "deployment":
         return <Cloud size={20} className="text-[#FF3E00]" />;
+      case "cs":
       case "cs fundamentals":
       case "core concepts":
         return <Cpu size={20} className="text-[#FF3E00]" />;
@@ -126,8 +127,8 @@ export default function Skills({ skillsData }: SkillsProps) {
           </motion.p>
         </div>
 
-        {/* 6-Card Grid: 3 columns on desktop, 2 on tablet, 1 on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 9-Card Grid: 3 columns on desktop, 2 on tablet, 1 on mobile with clear spacing between rows and cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-10">
           {categories.map((categoryObj, index) => {
             return (
               <motion.div
@@ -137,7 +138,7 @@ export default function Skills({ skillsData }: SkillsProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.08 }}
-                className="p-6 h-full rounded-none border border-white/10 bg-[#0c0c0c] flex flex-col gap-5 hover:border-[#FF3E00]/30 hover:shadow-[0_0_30px_rgba(255,62,0,0.08)] transition-all duration-300 shadow-2xl relative group overflow-hidden"
+                className="p-5 h-full rounded-none border border-white/10 bg-[#0c0c0c] flex flex-col gap-3.5 hover:border-[#FF3E00]/30 hover:shadow-[0_0_30px_rgba(255,62,0,0.08)] transition-all duration-300 shadow-2xl relative group"
               >
                 {/* Accent hover side bar indicator */}
                 <div className="absolute left-0 top-0 w-[2px] h-0 bg-[#FF3E00] group-hover:h-full transition-all duration-300" />
@@ -147,19 +148,19 @@ export default function Skills({ skillsData }: SkillsProps) {
                   <div className="p-2.5 rounded-none bg-[#FF3E00]/10 text-[#FF3E00] shrink-0">
                     {getCategoryIcon(categoryObj.category)}
                   </div>
-                  <h3 className="font-mono uppercase tracking-[2px] text-xs font-bold text-white">
+                  <h3 className="font-mono uppercase tracking-[2px] text-xs sm:text-sm font-bold text-white">
                     {categoryObj.category}
                   </h3>
                 </div>
 
                 {/* Skill Badges Wrapper */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 content-start flex-grow">
                   {categoryObj.items.map((skill) => (
                     <div
                       key={skill}
-                      className="flex items-center justify-center px-3 py-1.5 rounded-none border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-200 text-xs font-semibold text-white/90 select-none"
+                      className="flex items-center justify-center px-3 py-1.5 rounded-none border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/10 transition-all duration-200 select-none"
                     >
-                      <span className="font-sans text-[12px] font-semibold text-white/90">
+                      <span className="font-sans text-sm font-normal text-white/90">
                         {skill}
                       </span>
                     </div>

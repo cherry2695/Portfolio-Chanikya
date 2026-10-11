@@ -113,9 +113,9 @@ export default function About({ onResumeDownload }: AboutProps) {
                 </div>
               </motion.div>
 
-              {/* Experience Card */}
+              {/* Internship Card */}
               <motion.div
-                id="about-experience-card"
+                id="about-internship-card"
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -127,21 +127,21 @@ export default function About({ onResumeDownload }: AboutProps) {
                     <Briefcase size={16} />
                   </div>
                   <h3 className="font-mono uppercase tracking-[2px] text-xs font-bold text-white">
-                    Experience
+                    Internship
                   </h3>
                 </div>
 
                 <div className="flex flex-col gap-5">
                   <div>
                     <h4 className="font-sans font-bold text-base sm:text-lg text-white">
-                      Graphic Designer
+                      Graphic Designer & UI/UX Designer
                     </h4>
                     <p className="font-sans text-sm text-[#FF3E00] font-medium mt-1">
-                      Centre for Innovation & Entrepreneurship
+                      Apollo Pharmacies
                     </p>
                     <div className="flex flex-wrap gap-2 items-center mt-2.5">
                       <span className="inline-block bg-white/5 text-white/70 border border-white/10 text-xs font-mono tracking-wider uppercase px-3 py-1 rounded-none">
-                        Aug 2025 &mdash; Present
+                        June 2026 &mdash; Sep 2026
                       </span>
                     </div>
                   </div>
@@ -150,14 +150,14 @@ export default function About({ onResumeDownload }: AboutProps) {
 
                   <div>
                     <h4 className="font-sans font-bold text-base sm:text-lg text-white">
-                      UI/UX Designer
+                      Enterprise Virtual Intern
                     </h4>
                     <p className="font-sans text-sm text-[#FF3E00] font-medium mt-1">
-                      Apollo Pharmacies
+                      ServiceNow &bull; AICTE &bull; SmartBridge
                     </p>
                     <div className="flex flex-wrap gap-2 items-center mt-2.5">
                       <span className="inline-block bg-white/5 text-white/70 border border-white/10 text-xs font-mono tracking-wider uppercase px-3 py-1 rounded-none">
-                        June 2026 &mdash; Sep 2026
+                        2026
                       </span>
                     </div>
                   </div>

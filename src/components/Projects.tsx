@@ -26,7 +26,7 @@ export default function Projects({ projects, onViewMoreClick }: ProjectsProps) {
       imageUrl: shopzyMockup,
     },
     {
-      title: "Medicare Assistant – Smart Healthcare Platform",
+      title: "Medicare – Smart Healthcare Platform",
       description: "A modern full-stack healthcare platform that helps patients manage prescriptions, receive voice-based medication reminders, compare medicine prices across multiple pharmacies and stay informed through real-time notifications. The application is designed to improve medication adherence and simplify healthcare management with a responsive user interface.",
       tags: ["React.js", "TypeScript", "MySQL", "Node.js", "Express.js", "Drizzle ORM"],
       githubUrl: "https://github.com/cherry2695/MediCare-FullStack-Healthcare-Platform",
